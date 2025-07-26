@@ -22,6 +22,11 @@ app.post('/braintree/transactions', (req, res) => {
     cardId: uuidv4(),
   };
 
+  if (response.status === "failed") {
+    res.status(400).json(response);
+    return
+  }
+
   res.json(response);
 });
 
@@ -42,6 +47,11 @@ app.post('/stripe/charges', (req, res) => {
     paymentMethod: 'card',
     cardId: uuidv4(),
   };
+
+  if (response.status === "failed") {
+    res.status(400).json(response);
+    return
+  }
 
   res.json(response);
 });
