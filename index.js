@@ -7,7 +7,7 @@ app.use(express.json());
 app.post('/braintree/transactions', (req, res) => {
   console.log('request in /braintree/transactions', req.headers['user-agent']);
 
-  const fail = Math.random() < 0.1;
+  const fail = Math.random() < 0.4;
   const { amount = '', currency = '', statementDescriptor = '' } = req.body;
 
   const response = {
@@ -33,7 +33,7 @@ app.post('/braintree/transactions', (req, res) => {
 app.post('/stripe/charges', (req, res) => {
   console.log('request in /stripe/charges', req.headers['user-agent']);
 
-  const fail = Math.random() < 0.1;
+  const fail = Math.random() < 0.4;
   const { amount = '', currency = '', description = '' } = req.body;
 
   const response = {
